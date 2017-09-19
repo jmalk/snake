@@ -1,4 +1,5 @@
 var snake;
+var food;
 
 var canvasWidth = 640;
 var canvasHeight = 480;
