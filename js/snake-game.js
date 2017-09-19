@@ -24,6 +24,12 @@ function draw () {
 
   snake.move();
   snake.show();
+
+  if (snake.x === food.x && snake.y === food.y) {
+    console.log('EAT!');
+    food = null;
+    food = new Food();
+  }
 }
 
 function Snake (x, y) {
