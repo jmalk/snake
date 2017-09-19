@@ -25,7 +25,7 @@ function draw () {
   snake.move();
   snake.show();
 
-  if (snake.position[0] === food.x && snake.position[1] === food.y) {
+  if (snake.head[0] === food.x && snake.head[1] === food.y) {
     console.log('EAT!');
     food = null;
     food = new Food();
@@ -33,18 +33,19 @@ function draw () {
 }
 
 function Snake (x, y) {
-  this.position = [x, y]
+  this.body = [[x, y]];
+  this.head = this.body[0];
   this.xSpeed = 1;
   this.ySpeed = 0;
 
   this.move = function () {
-    this.position[0] += this.xSpeed;
-    this.position[1] += this.ySpeed;
+    this.head[0] += this.xSpeed;
+    this.head[1] += this.ySpeed;
   }
 
   this.show = function () {
     fill(255);
-    rect(this.position[0] * blockWidth, this.position[1] * blockHeight, blockWidth, blockHeight);
+    rect(this.head[0] * blockWidth, this.head[1] * blockHeight, blockWidth, blockHeight);
   }
 }
 
