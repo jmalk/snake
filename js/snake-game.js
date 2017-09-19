@@ -6,8 +6,12 @@ var canvasHeight = 480;
 var blockWidth = 10;
 var blockHeight = 10;
 
+var maxXCoord = Math.floor(canvasWidth / blockWidth);
+var maxYCoord = Math.floor(canvasHeight / blockHeight);
+
 function setup () {
   createCanvas(canvasWidth, canvasHeight);
+  frameRate(10);
   snake = new Snake(blockWidth, blockHeight);
   food = new Food()
 }
@@ -34,17 +38,17 @@ function Snake (x, y) {
 
   this.show = function () {
     fill(255);
-    rect(this.x, this.y, blockWidth, blockHeight);
+    rect(this.x * blockWidth, this.y * blockHeight, blockWidth, blockHeight);
   }
 }
 
 function Food () {
-  this.x = randomInteger(canvasWidth);
-  this.y = randomInteger(canvasHeight);
+  this.x = randomInteger(maxXCoord);
+  this.y = randomInteger(maxYCoord);
 
   this.show = function () {
     fill(100);
-    rect(this.x, this.y, blockWidth, blockHeight);
+    rect(this.x * blockWidth, this.y * blockHeight, blockWidth, blockHeight);
   }
 }
 
