@@ -39,8 +39,17 @@ function Snake (x, y) {
   this.ySpeed = 0;
 
   this.move = function () {
-    var newX = this.body[0][0] + this.xSpeed;
-    var newY = this.body[0][1] + this.ySpeed;
+    var newX = (this.body[0][0] + this.xSpeed) % maxXCoord;
+    var newY = (this.body[0][1] + this.ySpeed) % maxYCoord;
+
+    if (newX < 0) {
+      newX = maxXCoord;
+    }
+
+    if (newY < 0) {
+      newY = maxYCoord;
+    }
+
     this.body.unshift([newX, newY]);
     this.body.pop();
   }
