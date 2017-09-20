@@ -1,5 +1,6 @@
 var snake;
 var food;
+var points = 0;
 
 var canvasWidth = 640;
 var canvasHeight = 480;
@@ -33,6 +34,9 @@ function draw () {
   if (snake.body[0][0] === food.x && snake.body[0][1] === food.y) {
     console.log('EAT!');
     snake.body.push([food.x, food.y]);
+    points += 1;
+    var score = document.getElementById('score');
+    score.innerHTML = 'Score = ' + points;
     food = null;
     food = new Food();
   }
