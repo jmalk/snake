@@ -99,16 +99,18 @@ function Food () {
 }
 
 function keyPressed () {
-  if (keyCode === LEFT_ARROW) {
+  // Key codes 72, 74, 75, 76 are h, j, k, l, respectively.
+  // Vim keys for left, down, up, right.
+  if (keyCode === LEFT_ARROW || keyCode === 72) {
     snake.xSpeed = -1;
     snake.ySpeed = 0;
-  } else if (keyCode === RIGHT_ARROW) {
+  } else if (keyCode === RIGHT_ARROW || keyCode === 76) {
     snake.xSpeed = 1;
     snake.ySpeed = 0;
-  } else if (keyCode === UP_ARROW) {
+  } else if (keyCode === UP_ARROW || keyCode === 75) {
     snake.xSpeed = 0;
     snake.ySpeed = -1;
-  } else if (keyCode === DOWN_ARROW) {
+  } else if (keyCode === DOWN_ARROW || keyCode === 74) {
     snake.xSpeed = 0;
     snake.ySpeed = 1;
   } else {
