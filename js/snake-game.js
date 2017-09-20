@@ -23,6 +23,11 @@ function draw () {
   food.show();
 
   snake.move();
+
+  if (snake.checkForCrash()) {
+    endGame();
+  };
+
   snake.show();
 
   if (snake.body[0][0] === food.x && snake.body[0][1] === food.y) {
@@ -31,6 +36,11 @@ function draw () {
     food = null;
     food = new Food();
   }
+}
+
+function endGame () {
+  clear();
+  noLoop();
 }
 
 function Snake (x, y) {
@@ -52,6 +62,18 @@ function Snake (x, y) {
 
     this.body.unshift([newX, newY]);
     this.body.pop();
+  }
+
+  this.checkForCrash = function () {
+    var returnValue = false;
+
+    for (var i = 1; i < this.body.length; i++) {
+      if (this.body[0][0] === this.body[i][0] && this.body[0][1] === this.body[i][1]) {
+        returnValue = true;
+      }
+    }
+
+    return returnValue;
   }
 
   this.show = function () {
