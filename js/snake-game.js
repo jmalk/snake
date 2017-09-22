@@ -118,6 +118,25 @@ function keyPressed () {
   }
 }
 
+function mouseDragged () {
+  var deltaX = mouseX - pmouseX;
+  var deltaY = mouseY - pmouseY;
+
+  if (Math.abs(deltaX) > Math.abs(deltaY) && deltaX < 0) {
+    snake.xSpeed = -1;
+    snake.ySpeed = 0;
+  } else if (Math.abs(deltaX) > Math.abs(deltaY) && deltaX > 0) {
+    snake.xSpeed = 1;
+    snake.ySpeed = 0;
+  } else if (Math.abs(deltaX) < Math.abs(deltaY) && deltaY < 0) {
+    snake.xSpeed = 0;
+    snake.ySpeed = -1;
+  } else if (Math.abs(deltaX) < Math.abs(deltaY) && deltaY > 0) {
+    snake.xSpeed = 0;
+    snake.ySpeed = 1;
+  }
+}
+
 function randomInteger(max) {
   return Math.floor(Math.random() * max);
 }
